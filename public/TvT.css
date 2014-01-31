@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0 5em 2em;
+  line-height: 1.8;
+  background: black;
+  color: #ddd;
+}
+
+:link, :visited {
+  color: #99f;
+}
+:link:hover {
+  color: #ccf;
+}
+
+h1 {
+  font-family: serif;
+  color: #933;
+  font-size: 4em;
+}
+
+article, footer, p {
+  margin: 0;
+}
+article {
+  margin: 2em 0;
+}
+
+article footer {
+  text-align: right;
+  font-size: 80%;
+}
+article footer p {
+  display: inline;
+}

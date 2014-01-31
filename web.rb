@@ -8,12 +8,15 @@ require 'uri'
 
 require './config'
 
+set :public_folder, File.join(File.dirname(__FILE__), 'public')
+set :haml, escape_html: true
+
 get '/' do
   haml :index, locals: {records: nil, query: ''}
 end
 
 post '/' do
-  redirect to('/%s' % URI.encode_www_form_component(params[:q].to_s))
+  redirect url_for(q: params[:q])
 end
 
 get '/:q/?:page?' do |query, page|
@@ -40,6 +43,10 @@ helpers do
 
   def paginate(records)
     haml :_paginate, locals: {records: records}
+  end
+
+  def time(t)
+    '<span title="%s">%s</span>' % [t.iso8601, t.strftime('%Y-%m-%d %H:%M:%S')]
   end
 end
 

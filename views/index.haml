@@ -1,20 +1,34 @@
-%title njslyr
-%h1 Wasshoi!
+<!DOCTYPE html>
+%head
+ %title
+  ニンジャスレイヤー全文検索
+  -if query
+   = '- ' + query
+ %link{rel: 'stylesheet', href: url('/TvT.css')}
+
+%h1 ニンジャスレイヤー全文検索
+
 %form{action: '/', method: 'post'}
  %p
-  %input{name: 'q', type: 'search', value: query}
+  %input{name: 'q', type: 'search', value: query, size: 40}
   %button 探す
- -if records
-  %p
-   全
-   %span.count= records.n_records
-   件
-  =paginate(records)
-  -records.each do |record|
-   %article
-    %p= record.text
-    %footer
-     %p
-      %a{href: record.togetter.url}= record.togetter.title
-     %p
-      %a{href: record.url}= record.created
+
+-if records
+ %p
+  全
+  %span.count= records.n_records
+  件
+ -if records.n_records <= 0
+  %p.alert 「#{query}」は存在しない。
+ -else
+  !=paginate(records)
+  %div.autopagerize_page_element
+   -records.each do |record|
+    %article
+     %p= record.text
+     %footer
+      %p
+       %a{href: record.togetter.url}= record.togetter.title
+      %p
+       %a{href: record.url}!= time(record.created)
+  !=paginate(records)
