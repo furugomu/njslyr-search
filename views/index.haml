@@ -1,0 +1,14 @@
+%title njslyr
+%h1 Wasshoi!
+%form{action: '/', method: 'post'}
+ %p
+  %input{name: 'q', type: 'search', value: query}
+  %button 探す
+ -records.each do |record|
+  %article
+   %p= record.text
+   %footer
+    %p
+     %a{href: record.togetter.url}= record.togetter.title
+    %p
+     %a{href: record.url}= record.created
