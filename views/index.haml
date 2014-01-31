@@ -4,11 +4,17 @@
  %p
   %input{name: 'q', type: 'search', value: query}
   %button 探す
- -records.each do |record|
-  %article
-   %p= record.text
-   %footer
-    %p
-     %a{href: record.togetter.url}= record.togetter.title
-    %p
-     %a{href: record.url}= record.created
+ -if records
+  %p
+   全
+   %span.count= records.n_records
+   件
+  =paginate(records)
+  -records.each do |record|
+   %article
+    %p= record.text
+    %footer
+     %p
+      %a{href: record.togetter.url}= record.togetter.title
+     %p
+      %a{href: record.url}= record.created

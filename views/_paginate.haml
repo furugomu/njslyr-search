@@ -1,0 +1,16 @@
+-current=records.current_page
+-if current == 1
+ %span.page 前
+-else
+ %a.page.prev{rel: 'prev', href: url_for(params.merge(page: current-1))} 前
+
+-(1..records.n_pages).each do |page|
+ -if current == page
+  %span.page.current= page
+ -else
+  %a.page{href: url_for(q: params[:q], page: page)}= page
+
+-if current == records.n_pages
+ %span.page 次
+-else
+ %a.page.next{rel: 'next', href: url_for(params.merge(page: current+1))} 次
