@@ -22,7 +22,7 @@ get '/:q/?:page?' do |query, page|
     record[:text] =~ query
   end
   page = records.paginate(
-    [['created', :desc]],
+    [['_score', :desc], ['created', :desc]],
     page: (page||1).to_i,
     size: 50)
   haml :index, locals: {records: page, query: query}

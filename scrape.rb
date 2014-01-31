@@ -62,10 +62,12 @@ def scrape(togetter_url)
         title: title,
         url: togetter_url,
       })
+      # 実況つきのは省略
+      title =~ /【実況】/ and return
     end
     scrape_page(doc, togetter)
   end
-  sleep 5
+  sleep 1
 end
 
 # 1ページ分のツイットをアレする
@@ -77,6 +79,9 @@ def scrape_page(doc, togetter)
     link = tweet.css('.status_right a[href]').last
     time = Time.parse(link.text+' +0900')
     url = link[:href]
+
+    # とりあえず njslyr アカウント以外のツイートは使わない
+    url =~ %r{/njslyr/} or next
 
     tweets.add({
       text: text,
