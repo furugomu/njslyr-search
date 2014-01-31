@@ -16,7 +16,6 @@ body {
 h1 {
   font-family: serif;
   color: #933;
-  font-size: 4em;
 }
 
 article, footer, p {
@@ -32,4 +31,20 @@ article footer {
 }
 article footer p {
   display: inline;
+}
+
+@media screen and (min-width: 641px) {
+  body {
+    padding: 0 5em 2em;
+  }
+}
+@media screen and (max-width: 640px) {
+  body {
+    padding: 0 2em 2em;
+  }
+}
+@media screen and (max-width: 320px) {
+  body {
+    padding: 0 0.2em 1em;
+  }
 }

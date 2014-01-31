@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 %head
+ %meta{name: 'viewport', content: 'width=device-width'}
  %title
   ニンジャスレイヤー全文検索
   -if query
@@ -10,7 +11,7 @@
 
 %form{action: '/', method: 'post'}
  %p
-  %input{name: 'q', type: 'search', value: query, size: 40}
+  %input{name: 'q', type: 'search', value: query, size: 40, placeholder: 'コマキタネー'}
   %button 探す
 
 -if records
