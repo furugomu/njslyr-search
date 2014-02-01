@@ -1,12 +1,14 @@
 # -*- encoding: UTF-8 -*-
 
-Groonga::Context.default_options = {encoding: :utf8}
-path = Pathname.new('db/njslyr.db')
-if path.exist?
-  Groonga::Database.open(path.to_s)
-else
-  Groonga::Database.create(path: path.to_s)
-  define_schema()
+def setup
+  Groonga::Context.default_options = {encoding: :utf8}
+  path = Pathname.new('db/njslyr.db')
+  if path.exist?
+    Groonga::Database.open(path.to_s)
+  else
+    Groonga::Database.create(path: path.to_s)
+    define_schema()
+  end
 end
 
 def define_schema
@@ -31,3 +33,5 @@ def define_schema
     end
   end
 end
+
+setup()

@@ -81,7 +81,7 @@ def scrape_page(doc, togetter)
     url = link[:href]
 
     # とりあえず njslyr アカウント以外のツイートは使わない
-    url =~ %r{/njslyr/} or next
+    url =~ %r{/NJSLYR/}i or next
 
     tweets.add({
       text: text,
