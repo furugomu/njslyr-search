@@ -9,6 +9,7 @@ require 'uri'
 require './config'
 
 set :public_folder, File.join(File.dirname(__FILE__), 'public')
+set :views, File.join(File.dirname(__FILE__), 'views')
 set :haml, escape_html: true
 
 get '/' do

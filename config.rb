@@ -2,7 +2,7 @@
 
 def setup
   Groonga::Context.default_options = {encoding: :utf8}
-  path = Pathname.new('db/njslyr.db')
+  path = Pathname.new(__FILE__).dirname.join('db/njslyr.db')
   if path.exist?
     Groonga::Database.open(path.to_s)
   else
